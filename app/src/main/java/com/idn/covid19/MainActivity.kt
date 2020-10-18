@@ -13,6 +13,7 @@ import com.idn.covid19.network.AllCountries
 import com.idn.covid19.network.Countries
 import com.idn.covid19.network.Network
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main2.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,26 +27,26 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main2)
 
-        search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
+//        search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                adapters.filter.filter(newText)
+//                return false
+//            }
+//        })
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                adapters.filter.filter(newText)
-                return false
-            }
-        })
-
-        swipe_refresh.setOnRefreshListener {
-            getCountry()
-            swipe_refresh.isRefreshing = false
-        }
-
+//        swipe_refresh.setOnRefreshListener {
+//            getCountry()
+//            swipe_refresh.isRefreshing = false
+//        }
+//
         getCountry()
-        initializeViews()
+//        initializeViews()
 
     }
 
@@ -59,25 +60,25 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val getListDataCorona = response.body()!!.Global
                     val formatter: NumberFormat = DecimalFormat("#,###")
-                    txt_confirmed_glode.text =
+                    txt_total_confirm.text =
                         formatter.format(getListDataCorona.TotalConfirmed.toDouble())
-                    txt_recovered_globe.text =
+                    txt_total_recovered.text =
                         formatter.format(getListDataCorona.TotalRecovered.toDouble())
-                    txt_deaths_glode.text =
+                    txt_total_deaths.text =
                         formatter.format(getListDataCorona.TotalDeaths.toDouble())
-                    rv_country.apply {
-                        setHasFixedSize(true)
-                        layoutManager = LinearLayoutManager(this@MainActivity)
-                        progress_bar.visibility = View.GONE
-                        adapters = CountryAdapter(
-                            response.body()!!.Countries as ArrayList<Countries>
-                        ) { negara ->
-                            itemClicked(negara)
-                        }
-                        adapter = adapters
-                    }
+//                    rv_country.apply {
+//                        setHasFixedSize(true)
+//                        layoutManager = LinearLayoutManager(this@MainActivity)
+//                        progress_bar.visibility = View.GONE
+//                        adapters = CountryAdapter(
+//                            response.body()!!.Countries as ArrayList<Countries>
+//                        ) { negara ->
+//                            itemClicked(negara)
+//                        }
+//                        adapter = adapters
+//                    }
                 } else {
-                    progress_bar.visibility = View.GONE
+//                    progress_bar.visibility = View.GONE
                     handleError(this@MainActivity)
                 }
             }
@@ -115,28 +116,28 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun sequenceWithoutInternet(asc: Boolean) {
-        rv_country.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            if (asc) {
-                (layoutManager as LinearLayoutManager).reverseLayout = true
-                (layoutManager as LinearLayoutManager).stackFromEnd = true
-                Toast.makeText(this@MainActivity, "Z - A", Toast.LENGTH_SHORT).show()
-            } else {
-                (layoutManager as LinearLayoutManager).reverseLayout = false
-                (layoutManager as LinearLayoutManager).stackFromEnd = false
-                Toast.makeText(this@MainActivity, "A - Z", Toast.LENGTH_SHORT).show()
-            }
-            adapter = adapters
-        }
-    }
+//    private fun sequenceWithoutInternet(asc: Boolean) {
+//        rv_country.apply {
+//            setHasFixedSize(true)
+//            layoutManager = LinearLayoutManager(this@MainActivity)
+//            if (asc) {
+//                (layoutManager as LinearLayoutManager).reverseLayout = true
+//                (layoutManager as LinearLayoutManager).stackFromEnd = true
+//                Toast.makeText(this@MainActivity, "Z - A", Toast.LENGTH_SHORT).show()
+//            } else {
+//                (layoutManager as LinearLayoutManager).reverseLayout = false
+//                (layoutManager as LinearLayoutManager).stackFromEnd = false
+//                Toast.makeText(this@MainActivity, "A - Z", Toast.LENGTH_SHORT).show()
+//            }
+//            adapter = adapters
+//        }
+//    }
 
-    private fun initializeViews() {
-        btn_sequence.setOnClickListener {
-            sequenceWithoutInternet(ascending)
-            ascending = !ascending
-        }
-    }
+//    private fun initializeViews() {
+//        btn_sequence.setOnClickListener {
+//            sequenceWithoutInternet(ascending)
+//            ascending = !ascending
+//        }
+//    }
 
 }
