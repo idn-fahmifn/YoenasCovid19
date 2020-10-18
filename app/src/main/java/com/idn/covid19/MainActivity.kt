@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        search_view.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+        search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
@@ -59,9 +59,12 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val getListDataCorona = response.body()!!.Global
                     val formatter: NumberFormat = DecimalFormat("#,###")
-                    txt_confirmed_glode.text = formatter.format(getListDataCorona.TotalConfirmed.toDouble())
-                    txt_recovered_globe.text = formatter.format(getListDataCorona.TotalRecovered.toDouble())
-                    txt_deaths_glode.text = formatter.format(getListDataCorona.TotalDeaths.toDouble())
+                    txt_confirmed_glode.text =
+                        formatter.format(getListDataCorona.TotalConfirmed.toDouble())
+                    txt_recovered_globe.text =
+                        formatter.format(getListDataCorona.TotalRecovered.toDouble())
+                    txt_deaths_glode.text =
+                        formatter.format(getListDataCorona.TotalDeaths.toDouble())
                     rv_country.apply {
                         setHasFixedSize(true)
                         layoutManager = LinearLayoutManager(this@MainActivity)
@@ -95,8 +98,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(moveWithData)
     }
 
-    private fun  handleError(context: Context){
-        AlertDialog.Builder(this)
+    private fun handleError(context: Context) {
+        AlertDialog.Builder(context)
             .setTitle("Network Error!")
             .setCancelable(false)
             .setPositiveButton("REFRESH") { _, _ ->
@@ -112,15 +115,15 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun sequenceWithoutInternet(asc: Boolean){
+    private fun sequenceWithoutInternet(asc: Boolean) {
         rv_country.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this@MainActivity)
-            if (asc){
+            if (asc) {
                 (layoutManager as LinearLayoutManager).reverseLayout = true
                 (layoutManager as LinearLayoutManager).stackFromEnd = true
                 Toast.makeText(this@MainActivity, "Z - A", Toast.LENGTH_SHORT).show()
-            }else{
+            } else {
                 (layoutManager as LinearLayoutManager).reverseLayout = false
                 (layoutManager as LinearLayoutManager).stackFromEnd = false
                 Toast.makeText(this@MainActivity, "A - Z", Toast.LENGTH_SHORT).show()

@@ -1,5 +1,6 @@
 package com.idn.covid19
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
@@ -48,7 +49,7 @@ class ChartCountryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chart_country)
 
-        sharedPreferences = this.getSharedPreferences(sharedPrefFile,Context.MODE_PRIVATE)
+        sharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
 
         val formatter: NumberFormat = DecimalFormat("#,###")
         val intentNamaNegara: String? = intent.getStringExtra(EXTRA_COUNTRY)
@@ -60,7 +61,7 @@ class ChartCountryActivity : AppCompatActivity() {
         val newRecovery: String? = intent.getStringExtra(EXTRA_NEWRECOVERED)
         val totalRecovery: String? = intent.getStringExtra(EXTRA_TOTALRECOVERED)
         val idCountry: String? = intent.getStringExtra(EXTRA_COUNTRYID)
-        val editor: SharedPreferences.Editor =  sharedPreferences.edit()
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
         txt_country_chart.text = intentNamaNegara.toString()
         txt_current.text = lastUdate.toString()
@@ -79,9 +80,10 @@ class ChartCountryActivity : AppCompatActivity() {
         simpanDataNegara = simpanNegara.toString()
         simpanDataFlag = simpanFlag.toString() + "/flat/64.png"
 
-        if (simpanFlag != null){
-            Glide.with(this).load("https://www.countryflags.io/$simpanDataFlag").into(img_flag_chart)
-        }else{
+        if (simpanFlag != null) {
+            Glide.with(this).load("https://www.countryflags.io/$simpanDataFlag")
+                .into(img_flag_chart)
+        } else {
             Toast.makeText(this, "Image Not Found", Toast.LENGTH_SHORT).show()
         }
 
@@ -89,15 +91,23 @@ class ChartCountryActivity : AppCompatActivity() {
 
     }
 
-    private fun getInfoCountry(){
+    private fun getInfoCountry() {
         Network().getInfoCountry().getInfoService(simpanDataNegara).enqueue(object :
             Callback<List<InfoCountry>> {
             override fun onFailure(call: Call<List<InfoCountry>>, t: Throwable) {
-                Toast.makeText(this@ChartCountryActivity, "error, please re-enter to this Country", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@ChartCountryActivity,
+                    "error, please re-enter to this Country",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
-            override fun onResponse(call: Call<List<InfoCountry>>, response: Response<List<InfoCountry>>) {
-                val getListDataCorona:List<InfoCountry> = response.body()!!
+            @SuppressLint("SimpleDateFormat")
+            override fun onResponse(
+                call: Call<List<InfoCountry>>,
+                response: Response<List<InfoCountry>>
+            ) {
+                val getListDataCorona: List<InfoCountry> = response.body()!!
                 if (response.isSuccessful) {
                     val barEntries: ArrayList<BarEntry> = ArrayList()
                     val barEntries2: ArrayList<BarEntry> = ArrayList()
@@ -157,7 +167,12 @@ class ChartCountryActivity : AppCompatActivity() {
                     chart_view.setTouchEnabled(true)
                     chart_view.description.isEnabled = false
                     chart_view.xAxis.axisMinimum = 0f
-                    chart_view.setVisibleXRangeMaximum(0f + chart_view.barData.getGroupWidth(groupSpace, barSpace) * groupCount)
+                    chart_view.setVisibleXRangeMaximum(
+                        0f + chart_view.barData.getGroupWidth(
+                            groupSpace,
+                            barSpace
+                        ) * groupCount
+                    )
                     chart_view.groupBars(0f, groupSpace, barSpace)
                 }
             }

@@ -45,7 +45,9 @@ class CountryAdapter(val country: ArrayList<Countries>, val clickListener: (Coun
                 } else {
                     val resultList = ArrayList<Countries>()
                     for (row in country) {
-                        if (row.Country.toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(Locale.ROOT))){
+                        if (row.Country.toLowerCase(Locale.ROOT)
+                                .contains(charSearch.toLowerCase(Locale.ROOT))
+                        ) {
                             resultList.add(row)
                         }
                     }

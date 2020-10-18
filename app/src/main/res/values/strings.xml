@@ -14,4 +14,6 @@
     <string name="new_deaths">New Deaths</string>
     <string name="total_recovered">Total Recovered</string>
     <string name="new_recovered">New Recovered</string>
+    <string name="subtitle">Observe update of covid19</string>
+    <string name="data_negara">Lihat Data Setiap Negara</string>
 </resources>
