@@ -10,9 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/app_name"
+        android:textColor="@color/colorPrimary"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,12 +21,14 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
         android:fontFamily="sans-serif"
         android:text="@string/subtitle"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -33,33 +36,39 @@
         android:id="@+id/cv_confirmed"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         app:cardCornerRadius="8dp"
+        app:cardElevation="@dimen/card_elevation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cv_recovered"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.336">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:layout_margin="@dimen/vertical_card"
+            android:gravity="left"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txt_confirmed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Confirmed" />
+                android:text="Confirmed"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/txt_total_confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Confirmed" />
+                android:layout_marginTop="@dimen/vertical_margin_card_data"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="@string/dummy_data"
+                android:textSize="@dimen/data_card" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
@@ -68,9 +77,11 @@
         android:id="@+id/cv_recovered"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="24dp"
+        android:elevation="@dimen/dp8"
         app:cardCornerRadius="8dp"
+        app:cardElevation="@dimen/card_elevation"
         app:layout_constraintBottom_toBottomOf="@+id/cv_confirmed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -80,20 +91,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:layout_margin="@dimen/vertical_card"
+            android:gravity="left"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txt_recovered"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Recovered" />
+                android:text="Recovered"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/txt_total_recovered"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Recovered" />
+                android:layout_marginTop="@dimen/vertical_margin_card_data"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="@string/dummy_data"
+                android:textSize="@dimen/data_card" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -101,72 +117,69 @@
         android:id="@+id/cv_death"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
+        android:elevation="@dimen/dp8"
         app:cardCornerRadius="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cv_list_country"
-        app:layout_constraintEnd_toStartOf="@+id/cv_list_country"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:cardElevation="@dimen/card_elevation"
+        app:layout_constraintEnd_toEndOf="@+id/cv_confirmed"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cv_list_country">
+        app:layout_constraintStart_toStartOf="@+id/cv_confirmed"
+        app:layout_constraintTop_toBottomOf="@+id/cv_confirmed">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:layout_margin="@dimen/vertical_card"
+            android:gravity="left"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txt_deaths"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Deaths" />
+                android:text="Deaths"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/txt_total_deaths"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Deaths" />
+                android:layout_marginTop="@dimen/vertical_margin_card_data"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="@string/dummy_data"
+                android:textSize="@dimen/data_card" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_list_country"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cv_death"
-        app:layout_constraintTop_toBottomOf="@+id/cv_recovered">
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/cv_death"
+        app:layout_constraintEnd_toEndOf="@+id/cv_recovered"
+        app:layout_constraintStart_toStartOf="@+id/cv_recovered"
+        app:layout_constraintTop_toTopOf="@+id/cv_death">
 
-        <LinearLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="@string/data_negara" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_all_country"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/vertical_card"
+            android:backgroundTint="@color/colorPrimary"
+            android:clickable="true"
+            android:focusable="true"
+            android:tint="@android:color/white"
+            app:srcCompat="@drawable/ic_arrow_right" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/data_negara" />
+    </LinearLayout>
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/colorPrimary"
-                android:clickable="true"
-                android:focusable="true"
-                android:tint="@android:color/white"
-                app:srcCompat="@drawable/ic_arrow_right" />
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

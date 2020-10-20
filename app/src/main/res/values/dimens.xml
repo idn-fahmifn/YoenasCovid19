@@ -10,4 +10,8 @@
     <dimen name="sp14">14sp</dimen>
     <dimen name="sp18">18sp</dimen>
     <dimen name="sp16">16sp</dimen>
+    <dimen name="vertical_margin_card_data">24dp</dimen>
+    <dimen name="vertical_card">12dp</dimen>
+    <dimen name="data_card">26sp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
 </resources>
