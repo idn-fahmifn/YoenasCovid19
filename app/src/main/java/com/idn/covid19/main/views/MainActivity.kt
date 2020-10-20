@@ -1,24 +1,13 @@
-package com.idn.covid19
+package com.idn.covid19.main.views
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.idn.covid19.network.AllCountries
-import com.idn.covid19.network.Countries
-import com.idn.covid19.network.Network
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main2.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.text.DecimalFormat
-import java.text.NumberFormat
+import com.idn.covid19.main.adapter.CountryAdapter
+import com.idn.covid19.R
+//import com.idn.covid19.networks.Network
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,21 +40,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getCountry() {
-        Network().getCountries().getAllCountry().enqueue(object : Callback<AllCountries> {
-            override fun onFailure(call: Call<AllCountries>, t: Throwable) {
-
-            }
-
-            override fun onResponse(call: Call<AllCountries>, response: Response<AllCountries>) {
-                if (response.isSuccessful) {
-                    val getListDataCorona = response.body()!!.Global
-                    val formatter: NumberFormat = DecimalFormat("#,###")
-                    txt_total_confirm.text =
-                        formatter.format(getListDataCorona.TotalConfirmed.toDouble())
-                    txt_total_recovered.text =
-                        formatter.format(getListDataCorona.TotalRecovered.toDouble())
-                    txt_total_deaths.text =
-                        formatter.format(getListDataCorona.TotalDeaths.toDouble())
+//        Network().getCountries().getAllCountry().enqueue(object : Callback<AllCountries> {
+//            override fun onFailure(call: Call<AllCountries>, t: Throwable) {
+//
+//            }
+//
+//            override fun onResponse(call: Call<AllCountries>, response: Response<AllCountries>) {
+//                if (response.isSuccessful) {
+//                    val getListDataCorona = response.body()!!.Global
+//                    val formatter: NumberFormat = DecimalFormat("#,###")
+//                    txt_total_confirm.text =
+//                        formatter.format(getListDataCorona.TotalConfirmed.toDouble())
+//                    txt_total_recovered.text =
+//                        formatter.format(getListDataCorona.TotalRecovered.toDouble())
+//                    txt_total_deaths.text =
+//                        formatter.format(getListDataCorona.TotalDeaths.toDouble())
 //                    rv_country.apply {
 //                        setHasFixedSize(true)
 //                        layoutManager = LinearLayoutManager(this@MainActivity)
@@ -77,27 +66,31 @@ class MainActivity : AppCompatActivity() {
 //                        }
 //                        adapter = adapters
 //                    }
-                } else {
-//                    progress_bar.visibility = View.GONE
-                    handleError(this@MainActivity)
-                }
-            }
-        })
+//                } else {
+////                    progress_bar.visibility = View.GONE
+////                    handleError(this@MainActivity)
+////                }
+////            }
+////        })
     }
 
-    private fun itemClicked(countries: Countries) {
-        val moveWithData = Intent(this@MainActivity, ChartCountryActivity::class.java)
-        moveWithData.putExtra(ChartCountryActivity.EXTRA_COUNTRY, countries.Country)
-        moveWithData.putExtra(ChartCountryActivity.EXTRA_LATESTUPDATE, countries.Date)
-        moveWithData.putExtra(ChartCountryActivity.EXTRA_NEWDEATH, countries.NewDeaths)
-        moveWithData.putExtra(ChartCountryActivity.EXTRA_NEWCONFIRMED, countries.NewConfirmed)
-        moveWithData.putExtra(ChartCountryActivity.EXTRA_NEWRECOVERED, countries.NewRecovered)
-        moveWithData.putExtra(ChartCountryActivity.EXTRA_TOTALDEATH, countries.TotalDeaths)
-        moveWithData.putExtra(ChartCountryActivity.EXTRA_TOTALCONFIRMED, countries.TotalConfirmed)
-        moveWithData.putExtra(ChartCountryActivity.EXTRA_TOTALRECOVERED, countries.TotalRecovered)
-        moveWithData.putExtra(ChartCountryActivity.EXTRA_COUNTRYID, countries.CountryCode)
-        startActivity(moveWithData)
+    fun moveToCountry(){
+        startActivity(Intent(this, ListCountryActivity::class.java))
     }
+
+//    private fun itemClicked(countries: Countries) {
+//        val moveWithData = Intent(this@MainActivity, ChartCountryActivity::class.java)
+//        moveWithData.putExtra(ChartCountryActivity.EXTRA_COUNTRY, countries.Country)
+//        moveWithData.putExtra(ChartCountryActivity.EXTRA_LATESTUPDATE, countries.Date)
+//        moveWithData.putExtra(ChartCountryActivity.EXTRA_NEWDEATH, countries.NewDeaths)
+//        moveWithData.putExtra(ChartCountryActivity.EXTRA_NEWCONFIRMED, countries.NewConfirmed)
+//        moveWithData.putExtra(ChartCountryActivity.EXTRA_NEWRECOVERED, countries.NewRecovered)
+//        moveWithData.putExtra(ChartCountryActivity.EXTRA_TOTALDEATH, countries.TotalDeaths)
+//        moveWithData.putExtra(ChartCountryActivity.EXTRA_TOTALCONFIRMED, countries.TotalConfirmed)
+//        moveWithData.putExtra(ChartCountryActivity.EXTRA_TOTALRECOVERED, countries.TotalRecovered)
+//        moveWithData.putExtra(ChartCountryActivity.EXTRA_COUNTRYID, countries.CountryCode)
+//        startActivity(moveWithData)
+//    }
 
     private fun handleError(context: Context) {
         AlertDialog.Builder(context)

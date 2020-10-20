@@ -1,4 +1,4 @@
-package com.idn.covid19.network
+package com.idn.covid19.main.models
 
 data class AllCountries(
     val Global: World,
