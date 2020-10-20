@@ -12,7 +12,7 @@ class CovidRepository {
     private val compositeDisposable = CompositeDisposable()
     private val apiService = ServiceFactory.create()
 
-    fun getAllData(
+    fun getWorld(
         onResult: (AllCountries) -> Unit,
         onError: (Throwable) -> Unit
     ) {
