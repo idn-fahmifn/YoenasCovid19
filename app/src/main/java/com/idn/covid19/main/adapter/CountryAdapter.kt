@@ -1,4 +1,4 @@
-package com.idn.covid19
+package com.idn.covid19.main.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.idn.covid19.network.Countries
+import com.idn.covid19.R
+import com.idn.covid19.main.models.Countries
 import kotlinx.android.synthetic.main.list_country.view.*
 import java.text.DecimalFormat
 import java.text.NumberFormat
@@ -32,7 +33,7 @@ class CountryAdapter(val country: ArrayList<Countries>, val clickListener: (Coun
 
     override fun getItemCount() = countryFilterList.size
 
-    override fun onBindViewHolder(holder: CountryAdapter.CountryViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
         holder.bindItem(countryFilterList[position], clickListener)
     }
 
