@@ -17,8 +17,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="40dp"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/quicksand_bold"
             android:text="@string/app_name"
+            android:textColor="@color/colorPrimary"
             android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/quicksand"
             android:text="@string/subtitle"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,17 +42,14 @@
             android:id="@+id/cv_confirmed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="48dp"
             app:cardBackgroundColor="#FFFCAF27"
             app:cardCornerRadius="@dimen/card_radius"
             app:cardElevation="@dimen/card_elevation"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/cv_recovered"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintEnd_toEndOf="@+id/textView2"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintVertical_bias="0.336">
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,16 +62,17 @@
                     android:id="@+id/txt_confirmed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand"
                     android:text="@string/confirmed"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/txt_total_confirm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/vertical_margin_card_data"
-                    android:fontFamily="sans-serif-condensed-medium"
+                    android:layout_marginTop="@dimen/margin_data_dashboard"
+                    android:fontFamily="@font/quicksand_bold"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/data_card" />
             </LinearLayout>
@@ -84,17 +83,14 @@
             android:id="@+id/cv_recovered"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginTop="24dp"
             android:elevation="@dimen/dp8"
             app:cardBackgroundColor="#FF67D0DE"
             app:cardCornerRadius="@dimen/card_radius"
             app:cardElevation="@dimen/card_elevation"
-            app:layout_constraintBottom_toBottomOf="@+id/cv_confirmed"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/cv_confirmed"
-            app:layout_constraintTop_toTopOf="@+id/cv_confirmed">
+            app:layout_constraintEnd_toEndOf="@+id/cv_confirmed"
+            app:layout_constraintStart_toStartOf="@+id/cv_confirmed"
+            app:layout_constraintTop_toBottomOf="@+id/cv_confirmed">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -107,16 +103,17 @@
                     android:id="@+id/txt_recovered"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand"
                     android:text="@string/recovered"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/txt_total_recovered"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/vertical_margin_card_data"
-                    android:fontFamily="sans-serif-condensed-medium"
+                    android:layout_marginTop="@dimen/margin_data_dashboard"
+                    android:fontFamily="@font/quicksand_bold"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/data_card" />
             </LinearLayout>
@@ -131,10 +128,9 @@
             app:cardBackgroundColor="#FFE65B61"
             app:cardCornerRadius="@dimen/card_radius"
             app:cardElevation="@dimen/card_elevation"
-            app:layout_constraintEnd_toEndOf="@+id/cv_confirmed"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="@+id/cv_confirmed"
-            app:layout_constraintTop_toBottomOf="@+id/cv_confirmed">
+            app:layout_constraintEnd_toEndOf="@+id/cv_recovered"
+            app:layout_constraintStart_toStartOf="@+id/cv_recovered"
+            app:layout_constraintTop_toBottomOf="@+id/cv_recovered">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -147,16 +143,17 @@
                     android:id="@+id/txt_deaths"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand"
                     android:text="@string/deaths"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/txt_total_deaths"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/vertical_margin_card_data"
-                    android:fontFamily="sans-serif-condensed-medium"
+                    android:layout_marginTop="@dimen/margin_data_dashboard"
+                    android:fontFamily="@font/quicksand_bold"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/data_card" />
             </LinearLayout>
@@ -167,16 +164,17 @@
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="@+id/cv_death"
-            app:layout_constraintEnd_toEndOf="@+id/cv_recovered"
-            app:layout_constraintStart_toStartOf="@+id/cv_recovered"
-            app:layout_constraintTop_toTopOf="@+id/cv_death">
+            app:layout_constraintEnd_toEndOf="@+id/cv_death"
+            app:layout_constraintStart_toStartOf="@+id/cv_death"
+            app:layout_constraintTop_toBottomOf="@+id/cv_death">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
                 android:gravity="start"
                 android:text="@string/data_negara" />
 
@@ -185,7 +183,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dp8"
-                android:layout_marginTop="@dimen/vertical_card"
+                android:layout_marginTop="@dimen/vertical_margin_card_data"
                 android:backgroundTint="@color/colorPrimary"
                 android:clickable="true"
                 android:elevation="@dimen/card_elevation"
