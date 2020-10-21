@@ -1,136 +1,61 @@
 package com.idn.covid19.main.views
 
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
-import com.idn.covid19.main.adapter.CountryAdapter
+import android.util.Log
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.idn.covid19.R
-//import com.idn.covid19.networks.Network
+import com.idn.covid19.databinding.ActivityMain2Binding
+import com.idn.covid19.main.models.AllCountries
+import com.idn.covid19.main.viewmodels.WorldViewModel
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var adapters: CountryAdapter
-    private var ascending = true
+    private lateinit var worldBinding: ActivityMain2Binding
+    private lateinit var vmWorld: WorldViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
-
-//        search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                adapters.filter.filter(newText)
-//                return false
-//            }
-//        })
-
-//        swipe_refresh.setOnRefreshListener {
-//            getCountry()
-//            swipe_refresh.isRefreshing = false
-//        }
-//
-        getCountry()
-//        initializeViews()
-
+        initBinding()
     }
 
-    private fun getCountry() {
-//        Network().getCountries().getAllCountry().enqueue(object : Callback<AllCountries> {
-//            override fun onFailure(call: Call<AllCountries>, t: Throwable) {
-//
-//            }
-//
-//            override fun onResponse(call: Call<AllCountries>, response: Response<AllCountries>) {
-//                if (response.isSuccessful) {
-//                    val getListDataCorona = response.body()!!.Global
-//                    val formatter: NumberFormat = DecimalFormat("#,###")
-//                    txt_total_confirm.text =
-//                        formatter.format(getListDataCorona.TotalConfirmed.toDouble())
-//                    txt_total_recovered.text =
-//                        formatter.format(getListDataCorona.TotalRecovered.toDouble())
-//                    txt_total_deaths.text =
-//                        formatter.format(getListDataCorona.TotalDeaths.toDouble())
-//                    rv_country.apply {
-//                        setHasFixedSize(true)
-//                        layoutManager = LinearLayoutManager(this@MainActivity)
-//                        progress_bar.visibility = View.GONE
-//                        adapters = CountryAdapter(
-//                            response.body()!!.Countries as ArrayList<Countries>
-//                        ) { negara ->
-//                            itemClicked(negara)
-//                        }
-//                        adapter = adapters
-//                    }
-//                } else {
-////                    progress_bar.visibility = View.GONE
-////                    handleError(this@MainActivity)
-////                }
-////            }
-////        })
+    private fun initBinding() {
+        worldBinding = DataBindingUtil.setContentView(this, R.layout.activity_main2)
+        vmWorld = ViewModelProviders.of(this).get(WorldViewModel::class.java)
+        worldBinding.worldData = vmWorld
+
+        vmWorld.getWorld()
+
+        vmWorld.cekWorldResponse.observe(this, Observer {
+            showDataUI(it)
+        })
+
+        vmWorld.error.observe(this, Observer {
+            handlingError(it)
+        })
     }
 
-    fun moveToCountry(){
+    private fun showDataUI(it: AllCountries?) {
+        val formatter: NumberFormat = DecimalFormat("#,###")
+
+        worldBinding.txtTotalConfirm.text = formatter.format(it?.Global?.TotalConfirmed?.toDouble())
+        worldBinding.txtTotalRecovered.text = formatter.format(it?.Global?.TotalRecovered?.toDouble())
+        worldBinding.txtTotalDeaths.text = formatter.format(it?.Global?.TotalDeaths?.toDouble())
+    }
+
+    private fun handlingError(it: Throwable?) {
+        Log.d("debug ", "handlingError: " + it.toString())
+        Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+    }
+
+    fun moveToCountry(view: View){
         startActivity(Intent(this, ListCountryActivity::class.java))
     }
-
-//    private fun itemClicked(countries: Countries) {
-//        val moveWithData = Intent(this@MainActivity, ChartCountryActivity::class.java)
-//        moveWithData.putExtra(ChartCountryActivity.EXTRA_COUNTRY, countries.Country)
-//        moveWithData.putExtra(ChartCountryActivity.EXTRA_LATESTUPDATE, countries.Date)
-//        moveWithData.putExtra(ChartCountryActivity.EXTRA_NEWDEATH, countries.NewDeaths)
-//        moveWithData.putExtra(ChartCountryActivity.EXTRA_NEWCONFIRMED, countries.NewConfirmed)
-//        moveWithData.putExtra(ChartCountryActivity.EXTRA_NEWRECOVERED, countries.NewRecovered)
-//        moveWithData.putExtra(ChartCountryActivity.EXTRA_TOTALDEATH, countries.TotalDeaths)
-//        moveWithData.putExtra(ChartCountryActivity.EXTRA_TOTALCONFIRMED, countries.TotalConfirmed)
-//        moveWithData.putExtra(ChartCountryActivity.EXTRA_TOTALRECOVERED, countries.TotalRecovered)
-//        moveWithData.putExtra(ChartCountryActivity.EXTRA_COUNTRYID, countries.CountryCode)
-//        startActivity(moveWithData)
-//    }
-
-    private fun handleError(context: Context) {
-        AlertDialog.Builder(context)
-            .setTitle("Network Error!")
-            .setCancelable(false)
-            .setPositiveButton("REFRESH") { _, _ ->
-                super.onRestart()
-                val ripres = Intent(this@MainActivity, MainActivity::class.java)
-                startActivity(ripres)
-                finish()
-            }
-            .setNegativeButton("EXIT") { _, _ ->
-                finish()
-            }
-            .create()
-            .show()
-    }
-
-//    private fun sequenceWithoutInternet(asc: Boolean) {
-//        rv_country.apply {
-//            setHasFixedSize(true)
-//            layoutManager = LinearLayoutManager(this@MainActivity)
-//            if (asc) {
-//                (layoutManager as LinearLayoutManager).reverseLayout = true
-//                (layoutManager as LinearLayoutManager).stackFromEnd = true
-//                Toast.makeText(this@MainActivity, "Z - A", Toast.LENGTH_SHORT).show()
-//            } else {
-//                (layoutManager as LinearLayoutManager).reverseLayout = false
-//                (layoutManager as LinearLayoutManager).stackFromEnd = false
-//                Toast.makeText(this@MainActivity, "A - Z", Toast.LENGTH_SHORT).show()
-//            }
-//            adapter = adapters
-//        }
-//    }
-
-//    private fun initializeViews() {
-//        btn_sequence.setOnClickListener {
-//            sequenceWithoutInternet(ascending)
-//            ascending = !ascending
-//        }
-//    }
 
 }
