@@ -14,7 +14,8 @@
     <dimen name="vertical_card">12dp</dimen>
     <dimen name="data_card">32sp</dimen>
     <dimen name="card_elevation">12dp</dimen>
-    <dimen name="card_radius">10dp</dimen>
-    <dimen name="title_item">18sp</dimen>
+    <dimen name="card_radius">16dp</dimen>
+    <dimen name="title_item">16sp</dimen>
     <dimen name="margin_data_dashboard">12dp</dimen>
+    <dimen name="card_country_elevation">8dp</dimen>
 </resources>

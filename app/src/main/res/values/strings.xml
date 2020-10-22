@@ -17,4 +17,6 @@
     <string name="subtitle">Get the latest information about covid 19 around the world</string>
     <string name="data_negara">Show each county data</string>
     <string name="dummy_data">123</string>
+    <string name="title_list_country">Covid19 data each country</string>
+    <string name="search">Search</string>
 </resources>

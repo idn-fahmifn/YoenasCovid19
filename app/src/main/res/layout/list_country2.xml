@@ -1,124 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="363dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/vertical_margin_card_data"
-        android:layout_marginTop="@dimen/vertical_card"
-        android:layout_marginEnd="@dimen/vertical_margin_card_data"
-        app:cardCornerRadius="@dimen/card_radius"
-        app:cardElevation="@dimen/card_elevation"
-        app:contentPadding="@dimen/vertical_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <variable
+            name="itemCountry"
+            type="com.idn.covid19.main.viewmodels.ItemCountryViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/countries"
-                android:textSize="@dimen/data_card"
-                android:textStyle="bold" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="363dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/vertical_margin_card_data"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/vertical_margin_card_data"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="@dimen/card_radius"
+            app:cardElevation="@dimen/card_country_elevation"
+            app:contentPadding="@dimen/vertical_card"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/vertical_card"
-                android:orientation="horizontal"
-                android:weightSum="3"
-                android:baselineAligned="false">
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/itm_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@{itemCountry.country}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:layout_marginTop="@dimen/dp8"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/cases"
-                        android:textSize="@dimen/title_item" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/txt_total_case"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/vertical_card"
-                        android:fontFamily="sans-serif-condensed"
-                        android:gravity="center"
-                        android:text="@string/dummy_data"
-                        android:textSize="@dimen/data_card"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/quicksand"
+                            android:gravity="center"
+                            android:text="@string/cases"
+                            android:textSize="@dimen/title_item" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/itm_cases"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp8"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center"
+                            android:text="@{itemCountry.cases}"
+                            android:textSize="18sp" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/recovered"
-                        android:textSize="@dimen/title_item" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/txt_total_recovered"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp8"
-                        android:layout_marginTop="@dimen/vertical_card"
-                        android:layout_marginRight="@dimen/dp8"
-                        android:fontFamily="sans-serif-condensed"
-                        android:gravity="center"
-                        android:text="@string/dummy_data"
-                        android:textSize="@dimen/data_card"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/quicksand"
+                            android:gravity="center"
+                            android:text="@string/recovered"
+                            android:textSize="@dimen/title_item" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/txt_total_recovered"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp8"
+                            android:layout_marginTop="@dimen/dp8"
+                            android:layout_marginRight="@dimen/dp8"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center"
+                            android:text="@{itemCountry.recovered}"
+                            android:textSize="18sp" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/deaths"
-                        android:textSize="@dimen/title_item" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/txt_total_death"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/vertical_card"
-                        android:fontFamily="sans-serif-condensed"
-                        android:gravity="center"
-                        android:text="@string/dummy_data"
-                        android:textSize="@dimen/data_card"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/quicksand"
+                            android:gravity="center"
+                            android:text="@string/deaths"
+                            android:textSize="@dimen/title_item" />
+
+                        <TextView
+                            android:id="@+id/itm_death"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp8"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center"
+                            android:text="@{itemCountry.death}"
+                            android:textSize="18sp" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

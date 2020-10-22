@@ -11,10 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.views.ListCountryActivity" />
-<!--        <activity-->
-<!--            android:name=".ChartCountryActivity"-->
-<!--            android:screenOrientation="portrait" />-->
+        <activity android:name=".main.views.ListCountryActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".main.views.MainActivity"
             android:screenOrientation="portrait"
