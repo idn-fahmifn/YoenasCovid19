@@ -26,14 +26,49 @@ class ListCountryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initToolbar()
         initBinding()
+        initToolbar()
         initRecyclerView()
         initSwipeRefresh()
     }
 
     private fun initToolbar() {
         setSupportActionBar(toolbar_list_country)
+
+        var isShow = true
+        var scrollRange = -1
+        appbar_list_country.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+
+            container_head_title.translationY =
+                -verticalOffset.toFloat() // Un-slide the image or container from views
+
+            val percent =
+                (Math.abs(verticalOffset)).toFloat() / appBarLayout?.totalScrollRange!! // 0F to 1F
+
+
+            // Control container opacity according to offset
+            //Here you can play with the values according to your requirements
+
+            container_head_title.alpha = 1F - percent
+
+
+            container_head_title.scaleY = (1F - percent) + percent / 1.199F
+            container_head_title.scaleX = (1F - percent) + percent / 1.199F
+
+            if (scrollRange == -1) {
+                scrollRange = appBarLayout?.totalScrollRange!!
+            }
+            if (scrollRange + verticalOffset == 0) {
+                collapsing_list_country.title = getString(R.string.title_list_country)
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                toolbar_list_country.setNavigationIcon(R.drawable.ic_arrow_left)
+                isShow = true
+            } else if (isShow) {
+                collapsing_list_country.title = " "
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                isShow = false
+            }
+        })
 
 //        var isShow = true
 //        var scrollRange = -1
