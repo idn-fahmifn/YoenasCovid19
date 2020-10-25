@@ -1,8 +1,7 @@
 package com.idn.covid19.networks.repositories
 
-import com.idn.covid19.main.models.AllCountries
+import com.idn.covid19.main.models.*
 import com.idn.covid19.networks.ApiObserver
-import com.idn.covid19.main.models.InfoCountry
 import com.idn.covid19.networks.ServiceFactory
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -13,14 +12,14 @@ class CovidRepository {
     private val apiService = ServiceFactory.create()
 
     fun getWorld(
-        onResult: (AllCountries) -> Unit,
+        onResult: (CovidModel) -> Unit,
         onError: (Throwable) -> Unit
     ) {
         apiService.getAllCountry()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : ApiObserver<AllCountries>(compositeDisposable) {
-                override fun onApiSuccess(data: AllCountries) {
+            .subscribe(object : ApiObserver<CovidModel>(compositeDisposable) {
+                override fun onApiSuccess(data: CovidModel) {
                     onResult(data)
                 }
 
@@ -30,16 +29,15 @@ class CovidRepository {
             })
     }
 
-    fun getInfoCountry(
-        onResult: (MutableList<InfoCountry>) -> Unit,
-        onError: (Throwable) -> Unit,
-        country: String
+    fun getEachCountries(
+        onResult: (CountriesItem) -> Unit,
+        onError: (Throwable) -> Unit
     ) {
-        apiService.getInfoService(country)
+        apiService.getEachCountry()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : ApiObserver<MutableList<InfoCountry>>(compositeDisposable) {
-                override fun onApiSuccess(data: MutableList<InfoCountry>) {
+            .subscribe(object : ApiObserver<CountriesItem>(compositeDisposable) {
+                override fun onApiSuccess(data: CountriesItem) {
                     onResult(data)
                 }
 

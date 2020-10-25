@@ -10,9 +10,13 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorControlNormal">@color/violet</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
     </style>
 
+    <style name="collapsed_app_bar" parent="@android:style/TextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 
     <!--    region Text-->
     <style name="TextMatch">

@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.idn.covid19.R
 import com.idn.covid19.databinding.ActivityMain2Binding
-import com.idn.covid19.main.models.AllCountries
+import com.idn.covid19.main.models.CovidModel
 import com.idn.covid19.main.viewmodels.WorldViewModel
 import java.text.DecimalFormat
 import java.text.NumberFormat
@@ -41,12 +41,12 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun showDataUI(it: AllCountries?) {
+    private fun showDataUI(it: CovidModel?) {
         val formatter: NumberFormat = DecimalFormat("#,###")
 
-        worldBinding.txtTotalConfirm.text = formatter.format(it?.Global?.TotalConfirmed?.toDouble())
-        worldBinding.txtTotalRecovered.text = formatter.format(it?.Global?.TotalRecovered?.toDouble())
-        worldBinding.txtTotalDeaths.text = formatter.format(it?.Global?.TotalDeaths?.toDouble())
+        worldBinding.txtTotalConfirm.text = formatter.format(it?.global?.totalConfirmed?.toDouble())
+        worldBinding.txtTotalRecovered.text = formatter.format(it?.global?.totalRecovered?.toDouble())
+        worldBinding.txtTotalDeaths.text = formatter.format(it?.global?.totalDeaths?.toDouble())
     }
 
     private fun handlingError(it: Throwable?) {
