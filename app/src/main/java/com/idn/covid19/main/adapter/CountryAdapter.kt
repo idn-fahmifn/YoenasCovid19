@@ -13,7 +13,8 @@ import com.idn.covid19.main.viewmodels.ItemCountryViewModel
 
 class CountryAdapter(
     private val context: Context,
-    private val listCountry: MutableList<CountriesItem>
+    private val listCountry: MutableList<CountriesItem>,
+    private val listener: (CountriesItem) -> Unit
 ) : Adapter<CountryAdapter.CountryViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -34,24 +35,25 @@ class CountryAdapter(
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
         val fixPosition = holder.adapterPosition
-        holder.bindBinding(context, listCountry[fixPosition])
+        holder.bindBinding(context, listCountry[fixPosition], listener)
     }
 
     override fun getItemCount(): Int {
         return listCountry.size
     }
 
-    class CountryViewHolder(val binding: ListCountry2Binding)
-        : RecyclerView.ViewHolder(binding.root){
+    class CountryViewHolder(val binding: ListCountry2Binding) :
+        RecyclerView.ViewHolder(binding.root) {
         private lateinit var viewModel: ItemCountryViewModel
 
-        fun bindBinding(context: Context, model: CountriesItem) {
+        fun bindBinding(context: Context, model: CountriesItem, listener: (CountriesItem) -> Unit) {
             viewModel = ItemCountryViewModel(
                 context,
                 model,
                 binding
             )
             binding.itemCountry = viewModel
+            binding.cvListcountries.setOnClickListener { listener(model) }
             binding.executePendingBindings()
         }
     }

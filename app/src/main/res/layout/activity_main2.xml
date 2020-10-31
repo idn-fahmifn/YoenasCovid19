@@ -9,13 +9,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
             android:fontFamily="@font/quicksand_bold"
             android:text="@string/app_name"
@@ -30,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/quicksand"
             android:text="@string/subtitle"
             android:textSize="18sp"
@@ -43,7 +44,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            app:cardBackgroundColor="#FFFCAF27"
+            app:cardBackgroundColor="@color/color_warning"
             app:cardCornerRadius="@dimen/card_radius"
             app:cardElevation="@dimen/card_elevation"
             app:layout_constraintEnd_toEndOf="@+id/textView2"
@@ -85,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:elevation="@dimen/dp8"
-            app:cardBackgroundColor="#FF67D0DE"
+            app:cardBackgroundColor="@color/color_info"
             app:cardCornerRadius="@dimen/card_radius"
             app:cardElevation="@dimen/card_elevation"
             app:layout_constraintEnd_toEndOf="@+id/cv_confirmed"
@@ -125,7 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:elevation="@dimen/dp8"
-            app:cardBackgroundColor="#FFE65B61"
+            app:cardBackgroundColor="@color/color_danger"
             app:cardCornerRadius="@dimen/card_radius"
             app:cardElevation="@dimen/card_elevation"
             app:layout_constraintEnd_toEndOf="@+id/cv_recovered"
@@ -183,8 +184,8 @@
                 android:id="@+id/fab_all_country"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp8"
-                android:layout_marginTop="@dimen/vertical_margin_card_data"
+                android:layout_marginTop="@dimen/vertical_card"
+                android:layout_marginBottom="@dimen/vertical_margin_card_data"
                 android:backgroundTint="@color/colorPrimary"
                 android:clickable="true"
                 android:elevation="@dimen/card_elevation"

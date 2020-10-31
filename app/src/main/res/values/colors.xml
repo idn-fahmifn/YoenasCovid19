@@ -15,5 +15,9 @@
     <color name="light_tosca">#1DE9B6</color>
 
     <color name="violet">#8000CA</color>
+    <color name="white">#ff000000</color>
+    <color name="color_warning">#FFFCAF27</color>
+    <color name="color_info">#FF67D0DE</color>
+    <color name="color_danger">#FFE65B61</color>
 </resources>
 

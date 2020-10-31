@@ -10,12 +10,11 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorControlNormal">@color/colorPrimary</item>
     </style>
 
     <style name="collapsed_app_bar" parent="@android:style/TextAppearance">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
     <!--    region Text-->
@@ -116,4 +115,10 @@
         <item name="cardCornerRadius">@dimen/dp8</item>
         <item name="android:layout_margin">@dimen/dp8</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <color name="transparent">#00000000</color>
 </resources>
