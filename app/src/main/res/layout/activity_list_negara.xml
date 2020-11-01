@@ -105,7 +105,7 @@
             app:layout_anchor="@id/appbar_list_country"
             app:layout_anchorGravity="bottom|center">
 
-            <EditText
+            <!--<EditText
                 android:id="@+id/editTextTextPersonName22"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
@@ -125,7 +125,23 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageView24"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />-->
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/sv_country"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bd_edittext"
+                android:textCursorDrawable="@null"
+                app:iconifiedByDefault="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:queryBackground="@null"
+                app:queryHint="@string/search" />
 
             <ImageView
                 android:id="@+id/imageView24"
@@ -134,10 +150,11 @@
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/bd_edittext"
                 android:padding="@dimen/dp8"
-                app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName22"
+                app:layout_constraintBottom_toBottomOf="@+id/sv_country"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName22"
-                app:srcCompat="@drawable/ic_sequence" />
+                app:layout_constraintTop_toTopOf="@+id/sv_country"
+                app:srcCompat="@drawable/ic_sequence"
+                android:contentDescription="@string/sortir" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

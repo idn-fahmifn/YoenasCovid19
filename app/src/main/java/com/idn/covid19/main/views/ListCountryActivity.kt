@@ -3,6 +3,7 @@ package com.idn.covid19.main.views
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -31,6 +32,18 @@ class ListCountryActivity : AppCompatActivity() {
 
         initRecyclerView()
         initSwipeRefresh()
+
+        sv_country.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+
+        })
     }
 
     private fun initToolbar() {
@@ -40,7 +53,8 @@ class ListCountryActivity : AppCompatActivity() {
 
         var isShow = true
         var scrollRange = -1
-        appbar_list_country.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+        appbar_list_country.addOnOffsetChangedListener(AppBarLayout
+            .OnOffsetChangedListener { appBarLayout, verticalOffset ->
 
             // fade out content heading when scroll up
             container_head_title.translationY =
