@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
@@ -178,7 +179,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quicksand"
                 android:gravity="start"
-                android:text="@string/data_negara" />
+                android:text="@string/data_negara"
+                android:textSize="18sp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_all_country"
@@ -191,7 +193,7 @@
                 android:elevation="@dimen/card_elevation"
                 android:focusable="true"
                 android:onClick="moveToCountry"
-                android:tint="@android:color/white"
+                android:tint="@color/white"
                 app:srcCompat="@drawable/ic_arrow_right" />
 
         </LinearLayout>

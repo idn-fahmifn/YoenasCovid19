@@ -17,7 +17,7 @@
     <string name="subtitle">Get the latest information about covid 19 around the world</string>
     <string name="data_negara">Show each county data</string>
     <string name="dummy_data">123</string>
-    <string name="title_list_country">Covid19 data each country</string>
+    <string name="title_list_country">Data each country</string>
     <string name="search">Search</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
@@ -113,4 +113,9 @@
     <string name="new_data">New data</string>
     <string name="total_data">Total Data</string>
     <string name="sortir">Sort</string>
+    <string name="filter">Filter</string>
+    <string name="low_to_high">Low to high</string>
+    <string name="high_to_low">High to low</string>
+    <string name="data">Data</string>
+    <string name="apply">apply</string>
 </resources>

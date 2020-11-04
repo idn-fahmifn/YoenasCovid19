@@ -25,7 +25,7 @@
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
             app:cardCornerRadius="@dimen/card_radius"
-            app:cardElevation="@dimen/card_country_elevation"
+            app:cardElevation="8dp"
             app:contentPadding="@dimen/vertical_card"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

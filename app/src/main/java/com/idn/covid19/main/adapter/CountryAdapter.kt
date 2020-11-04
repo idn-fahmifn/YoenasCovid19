@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.idn.covid19.R
 import com.idn.covid19.databinding.ListCountry2Binding
+import com.idn.covid19.datas.AppConstants
 import com.idn.covid19.main.models.CountriesItem
 import com.idn.covid19.main.viewmodels.ItemCountryViewModel
 import java.util.*
@@ -73,11 +75,13 @@ class CountryAdapter(
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val charSearch = constraint.toString()
                 countryFilterList = if (charSearch.isEmpty()) {
-                     listCountry as ArrayList<CountriesItem>
+                    listCountry as ArrayList<CountriesItem>
                 } else {
                     val resultList = ArrayList<CountriesItem>()
                     for (row in listCountry) {
-                        if (row.country!!.toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(Locale.ROOT))) {
+                        if (row.country!!.toLowerCase(Locale.ROOT)
+                                .contains(charSearch.toLowerCase(Locale.ROOT))
+                        ) {
                             resultList.add(row)
                         }
                     }
@@ -95,5 +99,27 @@ class CountryAdapter(
             }
 
         }
+    }
+
+    fun changeSortType(typeSort: String) {
+        when (typeSort) {
+            AppConstants.KEY_DEATHS -> {
+                countryFilterList.sortBy { it.totalDeaths }
+                showToast("Sort by Total Deaths")
+            }
+            AppConstants.KEY_RECOVERED -> {
+                countryFilterList.sortBy { it.totalRecovered }
+                showToast("Sort by Total Recovered")
+            }
+            AppConstants.KEY_CONFIRMED -> {
+                countryFilterList.sortBy { it.totalConfirmed }
+                showToast("Sort by Total Confirmed")
+            }
+        }
+        notifyDataSetChanged()
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }
