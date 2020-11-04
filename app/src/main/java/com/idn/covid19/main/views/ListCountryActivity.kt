@@ -1,7 +1,8 @@
 package com.idn.covid19.main.views
 
 import android.os.Bundle
-import android.util.Log
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -19,9 +20,9 @@ import com.idn.covid19.main.models.CountriesItem
 import com.idn.covid19.main.models.CovidModel
 import com.idn.covid19.main.viewmodels.CountryViewModel
 import kotlinx.android.synthetic.main.activity_list_negara.*
-import kotlinx.android.synthetic.main.bottomsheet_short.*
 import kotlinx.android.synthetic.main.bottomsheet_short.view.*
 import kotlin.math.abs
+
 
 class ListCountryActivity : AppCompatActivity() {
 

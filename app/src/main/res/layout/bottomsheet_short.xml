@@ -56,12 +56,14 @@
             android:id="@+id/cp_low_to_high"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:text="@string/low_to_high" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/cp_high_to_low"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:text="@string/high_to_low" />
     </com.google.android.material.chip.ChipGroup>
 
@@ -94,18 +96,21 @@
             android:id="@+id/cp_confirmed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:text="@string/total_confirmed" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/cp_recovered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:text="@string/total_recovered" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/cp_death"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:text="@string/total_deaths" />
     </com.google.android.material.chip.ChipGroup>
 
