@@ -1,101 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-    <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-        <data>
+    <data>
 
-            <variable
-                name="allCountryData"
-                type="com.idn.covid19.main.viewmodels.CountryViewModel" />
-        </data>
+        <variable
+            name="allCountryData"
+            type="com.idn.covid19.main.viewmodels.CountryViewModel" />
+    </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:elevation="0dp"
+        android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar_list_country"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:fitsSystemWindows="true">
+            android:layout_height="200dp"
+            android:background="@android:color/white"
+            android:elevation="0dp"
+            android:fitsSystemWindows="true"
+            android:paddingBottom="24dp"
+            app:elevation="0dp">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsing_list_country"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:elevation="0dp"
                 android:fitsSystemWindows="true"
+                android:theme="@style/ToolbarTheme"
                 app:collapsedTitleTextAppearance="@style/collapsed_app_bar"
                 app:contentScrim="@android:color/white"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:toolbarId="@+id/toolbar_list_country">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_head_title"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="12dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.095"
-                        app:srcCompat="@drawable/ic_arrow_left" />
+                    android:layout_height="match_parent"
+                    android:background="@color/white">
 
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="24dp"
                         android:fontFamily="@font/quicksand_bold"
                         android:text="@string/title_list_country"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="24sp"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView10"
+                        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="48dp"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="@string/app_name"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="30sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-                    <EditText
-                        android:id="@+id/editTextTextPersonName2"
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/bd_edittext"
-                        android:drawableStart="@drawable/ic_search"
-                        android:drawablePadding="@dimen/dp8"
-                        android:ems="10"
-                        android:fontFamily="@font/quicksand"
-                        android:hint="@string/search"
-                        android:importantForAutofill="no"
-                        android:inputType="textPersonName"
-                        android:padding="@dimen/dp8"
-                        android:textColor="@android:color/darker_gray"
-                        android:textColorHint="@android:color/darker_gray"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView2"
-                        app:layout_constraintStart_toStartOf="@+id/textView3"
-                        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@drawable/bd_edittext"
-                        android:padding="@dimen/dp8"
-                        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName2"
-                        app:layout_constraintEnd_toEndOf="@+id/textView3"
-                        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName2"
-                        app:srcCompat="@drawable/ic_sequence" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -103,46 +77,8 @@
                     android:id="@+id/toolbar_list_country"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
+                    android:elevation="0dp"
                     app:layout_collapseMode="pin">
-
-                    <!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="match_parent">-->
-
-                    <!--                        <EditText-->
-                    <!--                            android:id="@+id/editTextTextPersonName22"-->
-                    <!--                            android:layout_width="0dp"-->
-                    <!--                            android:layout_height="48dp"-->
-                    <!--                            android:layout_marginEnd="8dp"-->
-                    <!--                            android:background="@drawable/bd_edittext"-->
-                    <!--                            android:drawableStart="@drawable/ic_search"-->
-                    <!--                            android:drawablePadding="@dimen/dp8"-->
-                    <!--                            android:ems="10"-->
-                    <!--                            android:fontFamily="@font/quicksand"-->
-                    <!--                            android:hint="@string/search"-->
-                    <!--                            android:importantForAutofill="no"-->
-                    <!--                            android:inputType="textPersonName"-->
-                    <!--                            android:padding="@dimen/dp8"-->
-                    <!--                            android:textColor="@android:color/darker_gray"-->
-                    <!--                            android:textColorHint="@android:color/darker_gray"-->
-                    <!--                            app:layout_constraintBottom_toBottomOf="parent"-->
-                    <!--                            app:layout_constraintEnd_toStartOf="@+id/imageView24"-->
-                    <!--                            app:layout_constraintStart_toStartOf="parent"-->
-                    <!--                            app:layout_constraintTop_toTopOf="parent" />-->
-
-                    <!--                        <ImageView-->
-                    <!--                            android:id="@+id/imageView24"-->
-                    <!--                            android:layout_width="48dp"-->
-                    <!--                            android:layout_height="48dp"-->
-                    <!--                            android:layout_marginEnd="24dp"-->
-                    <!--                            android:background="@drawable/bd_edittext"-->
-                    <!--                            android:padding="@dimen/dp8"-->
-                    <!--                            app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName22"-->
-                    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
-                    <!--                            app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName22"-->
-                    <!--                            app:srcCompat="@drawable/ic_sequence" />-->
-
-                    <!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
                 </androidx.appcompat.widget.Toolbar>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -153,6 +89,9 @@
             android:id="@+id/swipe_country"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="28dp"
+            android:background="@android:color/white"
+            android:paddingTop="2dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -166,6 +105,45 @@
                 app:layout_constraintVertical_bias="0.0"
                 tools:listitem="@layout/list_country2" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            app:layout_anchor="@id/appbar_list_country"
+            app:layout_anchorGravity="bottom|center">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/sv_country"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bd_edittext"
+                android:textCursorDrawable="@null"
+                app:iconifiedByDefault="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_sort_country"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:queryBackground="@null"
+                app:queryHint="@string/search" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_sort_country"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/bd_edittext"
+                android:contentDescription="@string/sortir"
+                app:layout_constraintBottom_toBottomOf="@+id/sv_country"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/sv_country"
+                app:srcCompat="@drawable/ic_sequence" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

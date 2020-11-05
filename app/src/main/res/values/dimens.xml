@@ -16,6 +16,10 @@
     <dimen name="card_elevation">12dp</dimen>
     <dimen name="card_radius">16dp</dimen>
     <dimen name="title_item">16sp</dimen>
-    <dimen name="margin_data_dashboard">12dp</dimen>
-    <dimen name="card_country_elevation">8dp</dimen>
+    <dimen name="margin_data_dashboard">2dp</dimen>
+    <dimen name="card_country_elevation">12dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="card_home_padding">16dp</dimen>
 </resources>

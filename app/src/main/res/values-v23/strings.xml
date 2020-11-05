@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sortir">Sort</string>
+    <string name="filter">Filter</string>
+    <string name="low_to_high">Low to high</string>
+    <string name="high_to_low">High to low</string>
+    <string name="data">Data</string>
+</resources>
