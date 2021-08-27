@@ -1,6 +1,5 @@
 package com.idn.covid19.main.views
 
-import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -16,7 +15,6 @@ import com.idn.covid19.main.models.CovidModel
 import com.idn.covid19.main.viewmodels.WorldViewModel
 import java.text.DecimalFormat
 import java.text.NumberFormat
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var worldBinding: ActivityMain2Binding
@@ -59,4 +57,5 @@ class MainActivity : AppCompatActivity() {
     fun moveToCountry(view: View){
         startActivity(Intent(this, ListCountryActivity::class.java))
     }
+
 }
